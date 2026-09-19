@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redstone | Full-Stack Developer & Hosting Engineer</title>
+  <meta name="description" content="Portfolio of Redstone — Developer specializing in full-stack web applications, custom websites, and high-availability server hosting infrastructure.">
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Tailwind Configuration for custom brand colors -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            redstone: {
+              50: '#fef2f2',
+              100: '#fee2e2',
+              400: '#f87171',
+              500: '#ef4444',
+              600: '#dc2626',
+              700: '#b91c1c',
+              800: '#991b1b',
+              900: '#7f1d1d',
+              950: '#450a0a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#09090e] text-slate-200 antialiased selection:bg-red-500 selection:text-white">
+
+  <!-- Ambient Glow Background Effects -->
+  <div class="ambient-glow-1 top-10 -left-20"></div>
+  <div class="ambient-glow-2 top-[40rem] -right-20"></div>
+  <div class="ambient-glow-1 bottom-40 left-1/4 opacity-70"></div>
+
+  <!-- Background Grid Pattern -->
+  <div class="fixed inset-0 bg-grid-pattern pointer-events-none z-0"></div>
+
+  <!-- Top Navigation Bar -->
+  <header class="sticky top-0 z-50 backdrop-blur-xl bg-[#09090e]/80 border-b border-white/5 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between relative z-10">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-red-600/10 border border-red-500/30 flex items-center justify-center text-red-500 group-hover:bg-red-500 group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(239,68,68,0.2)]">
+          <i class="fa-solid fa-bolt text-lg"></i>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-bold text-lg tracking-wider text-white flex items-center gap-1.5 font-mono">
+            REDSTONE<span class="text-red-500">.</span>DEV
+          </span>
+          <span class="text-[11px] text-slate-400 font-mono tracking-tight">Code • Web Apps • Hosting</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#about" class="hover:text-red-400 transition-colors">About</a>
+        <a href="#services" class="hover:text-red-400 transition-colors">Services</a>
+        <a href="#projects" class="hover:text-red-400 transition-colors">Projects</a>
+        <a href="#calculator" class="hover:text-red-400 transition-colors">Estimator</a>
+        <a href="#skills" class="hover:text-red-400 transition-colors">Skills</a>
+        <a href="#contact" class="hover:text-red-400 transition-colors">Contact</a>
+      </nav>
+
+      <!-- CTA Status Pill -->
+      <div class="hidden lg:flex items-center gap-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 beacon-dot"></span>
+          Available for New Projects
+        </div>
+        <a href="#contact" class="btn-red text-white text-xs font-semibold px-4 py-2 rounded-lg flex items-center gap-2">
+          <span>Let's Talk</span>
+          <i class="fa-solid fa-arrow-right text-[10px]"></i>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button id="mobileMenuBtn" class="md:hidden p-2 text-slate-400 hover:text-white focus:outline-none" aria-label="Toggle Navigation">
+        <i class="fa-solid fa-bars text-xl"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileMenu" class="hidden md:hidden bg-[#0e0e16] border-b border-white/10 px-6 py-5 space-y-4">
+      <a href="#about" class="mobile-nav-link block text-slate-300 hover:text-red-400 font-medium py-1">About</a>
+      <a href="#services" class="mobile-nav-link block text-slate-300 hover:text-red-400 font-medium py-1">Services</a>
+      <a href="#projects" class="mobile-nav-link block text-slate-300 hover:text-red-400 font-medium py-1">Projects</a>
+      <a href="#calculator" class="mobile-nav-link block text-slate-300 hover:text-red-400 font-medium py-1">Estimator</a>
+      <a href="#skills" class="mobile-nav-link block text-slate-300 hover:text-red-400 font-medium py-1">Skills</a>
+      <a href="#contact" class="mobile-nav-link block text-slate-300 hover:text-red-400 font-medium py-1">Contact</a>
+      <div class="pt-2 border-t border-white/10 flex flex-col gap-3">
+        <div class="inline-flex items-center gap-2 text-emerald-400 text-xs font-mono">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          Available for New Projects
+        </div>
+        <a href="#contact" class="btn-red text-white text-center text-sm font-semibold py-2.5 rounded-lg">Get in Touch</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative z-10 pt-16 pb-24 lg:pt-24 lg:pb-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Left Content -->
+      <div class="lg:col-span-7 space-y-6">
+        
+        <!-- Redstone Badge -->
+        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-red-950/40 border border-red-500/30 text-red-400 text-xs font-mono">
+          <i class="fa-solid fa-circle-nodes text-red-500 animate-pulse"></i>
+          <span>Redstone Core Activated • Full-Stack & Infrastructure</span>
+        </div>
+
+        <!-- Main Headline -->
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15]">
+          Building <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-rose-400 to-red-600">Modern Web Apps</span> & Bulletproof Hosting
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-base sm:text-lg text-slate-400 max-w-2xl leading-relaxed">
+          Hey, I'm <strong class="text-white font-semibold">Redstone</strong>. I engineer lightning-fast responsive websites, custom full-stack web applications, and resilient server hosting environments built for 99.99% uptime.
+        </p>
+
+        <!-- CTAs & Direct Contact -->
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a href="#projects" class="btn-red text-white font-semibold px-6 py-3.5 rounded-xl flex items-center gap-2 text-sm">
+            <span>View Projects</span>
+            <i class="fa-solid fa-arrow-right text-xs"></i>
+          </a>
+          <a href="#contact" class="btn-outline text-slate-200 font-semibold px-6 py-3.5 rounded-xl text-sm flex items-center gap-2">
+            <i class="fa-regular fa-envelope"></i>
+            <span>Hire Me</span>
+          </a>
+          <button id="copyDiscordHero" class="btn-outline text-slate-300 hover:text-white px-4 py-3.5 rounded-xl text-sm flex items-center gap-2" title="Copy Discord ID">
+            <i class="fa-brands fa-discord text-indigo-400"></i>
+            <span id="discordHeroText">Copy Discord</span>
+          </button>
+        </div>
+
+        <!-- Key Quick Metrics -->
+        <div class="pt-6 grid grid-cols-3 gap-4 border-t border-white/10 max-w-lg">
+          <div>
+            <div class="text-2xl font-bold font-mono text-white">50+</div>
+            <div class="text-xs text-slate-400">Apps & Sites Built</div>
+          </div>
+          <div>
+            <div class="text-2xl font-bold font-mono text-red-400">99.99%</div>
+            <div class="text-xs text-slate-400">Target Uptime</div>
+          </div>
+          <div>
+            <div class="text-2xl font-bold font-mono text-emerald-400">24/7</div>
+            <div class="text-xs text-slate-400">Host Monitoring</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Interactive Terminal Mockup -->
+      <div class="lg:col-span-5">
+        <div class="terminal-window rounded-2xl overflow-hidden text-sm font-mono relative">
+          
+          <!-- Terminal Header -->
+          <div class="bg-[#14141e] px-4 py-3 border-b border-white/10 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+              <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+              <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
+            </div>
+            <div class="text-xs text-slate-400 flex items-center gap-1.5">
+              <i class="fa-solid fa-terminal text-[11px] text-red-400"></i>
+              <span>redstone@core-node:~</span>
+            </div>
+            <div class="text-[10px] text-slate-500">bash</div>
+          </div>
+
+          <!-- Terminal Content -->
+          <div class="p-5 space-y-3 bg-[#0a0a12]/90 min-h-[330px]">
+            <div class="text-slate-400 flex items-center gap-2">
+              <span class="text-red-500">➜</span>
+              <span class="text-emerald-400">~</span>
+              <span class="text-slate-200">redstone --profile --all</span>
+            </div>
+
+            <div class="space-y-1.5 text-xs text-slate-300 pt-1">
+              <p><span class="text-red-400 font-bold">[PROFILE]</span> Redstone | Developer & Systems Architect</p>
+              <p><span class="text-blue-400 font-bold">[SERVICES]</span> Web Development, Web Apps, Server Hosting</p>
+              <p><span class="text-purple-400 font-bold">[STACK]</span> Node.js • React • Linux • Docker • Nginx</p>
+              <p><span class="text-emerald-400 font-bold">[STATUS]</span> Online & Available for commissions</p>
+            </div>
+
+            <div class="pt-3 border-t border-white/5 space-y-2 text-xs">
+              <div class="flex justify-between items-center text-slate-400">
+                <span>Infrastructure Node #01</span>
+                <span class="text-emerald-400 flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> 100% OPERATIONAL
+                </span>
+              </div>
+              <div class="w-full bg-slate-800/80 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-red-500 h-full rounded-full w-[94%]"></div>
+              </div>
+              <div class="flex justify-between text-[11px] text-slate-500">
+                <span>CPU: 18%</span>
+                <span>RAM: 3.2 / 16 GB</span>
+                <span>Latency: 14ms</span>
+              </div>
+            </div>
+
+            <!-- Animated Typing Cursor -->
+            <div class="pt-3 flex items-center gap-2 text-slate-300 text-xs">
+              <span class="text-red-500">➜</span>
+              <span class="text-slate-100" id="terminalTypingText">launching high-speed web apps...</span>
+              <span class="w-2 h-4 bg-red-500 animate-pulse"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- About & Value Proposition Section -->
+  <section id="about" class="relative z-10 py-20 border-y border-white/5 bg-[#0b0b13]/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <h2 class="text-xs font-mono uppercase tracking-widest text-red-500 font-bold">About Redstone</h2>
+        <p class="text-3xl sm:text-4xl font-extrabold text-white">Engineered for Reliability & Speed</p>
+        <p class="text-slate-400 text-sm sm:text-base">
+          From crafting custom interfaces that convert visitors to deploying resilient hosting servers that stay online under pressure, I cover the entire pipeline.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Card 1 -->
+        <div class="glass-card rounded-2xl p-7 space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 text-xl">
+            <i class="fa-solid fa-code"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white">Full-Stack Craftsmanship</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Clean code, maintainable architecture, and intuitive user experiences built with the latest web standards and frameworks.
+          </p>
+          <ul class="text-xs text-slate-300 space-y-2 pt-2 border-t border-white/5 font-mono">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-red-400"></i> Fast load speeds & Core Web Vitals</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-red-400"></i> Responsive on phones, tablets & desktops</li>
+          </ul>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="glass-card rounded-2xl p-7 space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 text-xl">
+            <i class="fa-solid fa-server"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white">Dedicated Hosting Solutions</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            I don't just build websites — I host and manage them. From custom VPS setups to game servers and enterprise cloud clusters.
+          </p>
+          <ul class="text-xs text-slate-300 space-y-2 pt-2 border-t border-white/5 font-mono">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-red-400"></i> Zero-downtime deployments</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-red-400"></i> SSL, reverse proxy & DDoS security</li>
+          </ul>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="glass-card rounded-2xl p-7 space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 text-xl">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white">End-to-End Ownership</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            No dealing with multiple disconnected contractors. You get seamless execution from initial wireframe to server provisioning and ongoing support.
+          </p>
+          <ul class="text-xs text-slate-300 space-y-2 pt-2 border-t border-white/5 font-mono">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-red-400"></i> Transparent communication & updates</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-red-400"></i> Scalable architecture ready to grow</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="relative z-10 py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+      <div class="space-y-3">
+        <h2 class="text-xs font-mono uppercase tracking-widest text-red-500 font-bold">What I Do</h2>
+        <p class="text-3xl sm:text-4xl font-extrabold text-white">Specialized Technical Services</p>
+        <p class="text-slate-400 text-sm max-w-xl">
+          Complete engineering packages tailored for creators, startups, gaming communities, and businesses.
+        </p>
+      </div>
+      <a href="#contact" class="btn-outline text-white text-sm font-semibold px-5 py-3 rounded-xl flex items-center gap-2 self-start md:self-auto">
+        <span>Request Custom Service</span>
+        <i class="fa-solid fa-arrow-right text-xs"></i>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <!-- Service 1 -->
+      <div class="glass-card rounded-2xl p-8 space-y-5 group">
+        <div class="flex items-center justify-between">
+          <div class="w-14 h-14 rounded-2xl bg-red-600/10 border border-red-500/20 flex items-center justify-center text-red-500 text-2xl group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-laptop-code"></i>
+          </div>
+          <span class="text-xs font-mono text-slate-500">01 / WEB APPS</span>
+        </div>
+        <div>
+          <h3 class="text-2xl font-bold text-white mb-2">Custom Web Applications</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Full-featured dynamic web apps with user authentication, database persistence, interactive dashboards, real-time WebSocket communication, and third-party API integrations.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-2 pt-2">
+          <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">React / Vue</span>
+          <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">Node.js</span>
+          <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">REST / GraphQL</span>
+          <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">PostgreSQL / MongoDB</span>
+        </div>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="glass-card rounded-2xl p-8 space-y-5 group">
+        <div class="flex items-center justify-between">
+          <div class="w-14 h-14 rounded-2xl bg-red-600/10 border border-red-500/20 flex items-center justify-center text-red-500 text-2xl group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-cloud"></i>
+          </div>
+          <span class="text-xs font-mono text-slate-500">02 / HOSTING & CLOUD</span>
+        </div>
+        <div>
+          <h3 class="text-2xl font-bold text-white mb-2">Server Hosting & Infrastructure</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Complete server provisioning and maintenance. Need a reliable VPS, dedicated box, web server, or game server? I handle Linux administration, Docker containerization, and 24/7 uptime monitoring.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-2 pt-2">
+          <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">Ubuntu / Debian Linux</span>
+          <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">Docker & Compose</span>
+          <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">Nginx / Reverse Proxy</span>
+          <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">SSL & DNS Config</span>
+        </div>
+      </div>
+
+      <!-- Service 3 -->
+      <div class="glass-card rounded-2xl p-8 space-y-5 group">
+        <div class="flex items-center justify-between">
+          <div class="w-14 h-14 rounded-2xl bg-red-600/10 border border-red-500/20 flex items-center justify-center text-red-500 text-2xl group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-globe"></i>
+          </div>
+          <span class="text-xs font-mono text-slate-500">03 / WEBSITES</span>
+        </div>
+        <div>
+          <h3 class="text-2xl font-bold text-white mb-2">Responsive Websites & Portfolios</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Striking, ultra-modern landing pages and business websites engineered for maximum conversion, fluid responsiveness, and top-tier Google Lighthouse performance scores.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-2 pt-2">
+          <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">Tailwind CSS</span>
+          <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">Modern Semantic HTML5</span>
+          <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">SEO Optimized</span>
+          <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">Fluid Animations</span>
+        </div>
+      </div>
+
+      <!-- Service 4 -->
+      <div class="glass-card rounded-2xl p-8 space-y-5 group">
+        <div class="flex items-center justify-between">
+          <div class="w-14 h-14 rounded-2xl bg-red-600/10 border border-red-500/20 flex items-center justify-center text-red-500 text-2xl group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-shield-virus"></i>
+          </div>
+          <span class="text-xs font-mono text-slate-500">04 / OPTIMIZATION & DEVOPS</span>
+        </div>
+        <div>
+          <h3 class="text-2xl font-bold text-white mb-2">Security, Speed & DDoS Defense</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Harden your existing setup. I perform speed audits, database query indexing, automated SSL renewal, firewall rules (UFW/Fail2Ban), and Cloudflare DDoS protection integration.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-2 pt-2">
+          <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">Cloudflare WAF</span>
+          <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">UFW & Fail2Ban</span>
+          <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">Caching & CDN</span>
+          <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">Automated Backups</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Featured Projects Section with Interactive Filtering -->
+  <section id="projects" class="relative z-10 py-24 bg-[#0a0a10]/80 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+        <h2 class="text-xs font-mono uppercase tracking-widest text-red-500 font-bold">Showcase</h2>
+        <p class="text-3xl sm:text-4xl font-extrabold text-white">Featured Projects & Deployments</p>
+        <p class="text-slate-400 text-sm">
+          A selection of web applications, client sites, and server architectures engineered by Redstone.
+        </p>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap items-center justify-center gap-2 pt-4">
+          <button class="project-filter-btn px-4 py-2 rounded-xl text-xs font-mono bg-red-600 text-white font-semibold transition-all" data-filter="all">All Projects (5)</button>
+          <button class="project-filter-btn px-4 py-2 rounded-xl text-xs font-mono bg-white/5 text-slate-300 hover:text-white hover:bg-white/10 transition-all" data-filter="web-apps">Web Apps</button>
+          <button class="project-filter-btn px-4 py-2 rounded-xl text-xs font-mono bg-white/5 text-slate-300 hover:text-white hover:bg-white/10 transition-all" data-filter="hosting">Hosting & Infra</button>
+          <button class="project-filter-btn px-4 py-2 rounded-xl text-xs font-mono bg-white/5 text-slate-300 hover:text-white hover:bg-white/10 transition-all" data-filter="websites">Websites</button>
+        </div>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsGrid">
+        
+        <!-- Project 1: RedHost -->
+        <div class="project-card glass-card rounded-2xl overflow-hidden flex flex-col" data-category="hosting web-apps">
+          <div class="h-48 bg-gradient-to-tr from-slate-900 via-red-950/40 to-slate-900 p-6 flex flex-col justify-between border-b border-white/5 relative">
+            <div class="flex justify-between items-center">
+              <span class="px-2.5 py-1 rounded-md bg-red-500/20 text-red-400 border border-red-500/30 text-[11px] font-mono">Hosting & App</span>
+              <span class="text-xs text-slate-400 font-mono"><i class="fa-solid fa-server mr-1"></i> Live</span>
+            </div>
+            <div class="space-y-1">
+              <div class="text-2xl text-red-500"><i class="fa-solid fa-sliders"></i></div>
+              <h4 class="text-xl font-bold text-white">RedHost Control Panel</h4>
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <p class="text-xs text-slate-400 leading-relaxed">
+              A bespoke web panel for managing Linux VPS nodes, Docker container deployment, automatic SSL provisioning, and real-time CPU/RAM metric streaming.
+            </p>
+            <div class="space-y-4">
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">Node.js</span>
+                <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">Docker API</span>
+                <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">WebSocket</span>
+                <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">Tailwind</span>
+              </div>
+              <div class="pt-3 border-t border-white/5 flex items-center justify-between text-xs font-mono">
+                <button class="open-project-details text-red-400 hover:text-red-300 flex items-center gap-1" data-title="RedHost Control Panel" data-desc="Complete custom hosting management portal built to orchestrate multiple VPS nodes, automate SSL certificates, and monitor server health in real-time." data-tags="Node.js, Docker, Linux, WebSocket">
+                  <span>Details</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                </button>
+                <a href="#contact" class="text-slate-400 hover:text-white flex items-center gap-1">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: Nexus Commerce -->
+        <div class="project-card glass-card rounded-2xl overflow-hidden flex flex-col" data-category="websites">
+          <div class="h-48 bg-gradient-to-tr from-slate-900 via-rose-950/30 to-slate-900 p-6 flex flex-col justify-between border-b border-white/5 relative">
+            <div class="flex justify-between items-center">
+              <span class="px-2.5 py-1 rounded-md bg-rose-500/20 text-rose-400 border border-rose-500/30 text-[11px] font-mono">Website</span>
+              <span class="text-xs text-slate-400 font-mono"><i class="fa-solid fa-cart-shopping mr-1"></i> E-Commerce</span>
+            </div>
+            <div class="space-y-1">
+              <div class="text-2xl text-rose-400"><i class="fa-solid fa-bag-shopping"></i></div>
+              <h4 class="text-xl font-bold text-white">Nexus Digital Storefront</h4>
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Ultra-fast responsive digital storefront featuring instant instant cart calculations, Stripe checkout integration, dynamic product filtering, and 99/100 Lighthouse score.
+            </p>
+            <div class="space-y-4">
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">HTML5/CSS3</span>
+                <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">Stripe API</span>
+                <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">Vanilla JS</span>
+                <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">SEO</span>
+              </div>
+              <div class="pt-3 border-t border-white/5 flex items-center justify-between text-xs font-mono">
+                <button class="open-project-details text-red-400 hover:text-red-300 flex items-center gap-1" data-title="Nexus Digital Storefront" data-desc="High-conversion e-commerce platform built for digital goods creators with zero-friction checkout and fast rendering." data-tags="Stripe API, JavaScript, Tailwind, SEO">
+                  <span>Details</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                </button>
+                <a href="#contact" class="text-slate-400 hover:text-white flex items-center gap-1">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: Pulse Dashboard -->
+        <div class="project-card glass-card rounded-2xl overflow-hidden flex flex-col" data-category="web-apps">
+          <div class="h-48 bg-gradient-to-tr from-slate-900 via-purple-950/30 to-slate-900 p-6 flex flex-col justify-between border-b border-white/5 relative">
+            <div class="flex justify-between items-center">
+              <span class="px-2.5 py-1 rounded-md bg-purple-500/20 text-purple-400 border border-purple-500/30 text-[11px] font-mono">Web App</span>
+              <span class="text-xs text-slate-400 font-mono"><i class="fa-solid fa-chart-line mr-1"></i> Analytics</span>
+            </div>
+            <div class="space-y-1">
+              <div class="text-2xl text-purple-400"><i class="fa-solid fa-chart-pie"></i></div>
+              <h4 class="text-xl font-bold text-white">Pulse Analytics Engine</h4>
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Interactive data dashboard allowing users to visualize incoming API traffic, server errors, and client engagement metrics with live animated charts and exportable reports.
+            </p>
+            <div class="space-y-4">
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">React</span>
+                <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">Chart.js</span>
+                <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">Express</span>
+                <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">PostgreSQL</span>
+              </div>
+              <div class="pt-3 border-t border-white/5 flex items-center justify-between text-xs font-mono">
+                <button class="open-project-details text-red-400 hover:text-red-300 flex items-center gap-1" data-title="Pulse Analytics Engine" data-desc="Real-time analytics tool built to ingest telemetry data and render smooth visual insights for web applications." data-tags="React, Express, Charts, PostgreSQL">
+                  <span>Details</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                </button>
+                <a href="#contact" class="text-slate-400 hover:text-white flex items-center gap-1">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4: Vanguard Cluster -->
+        <div class="project-card glass-card rounded-2xl overflow-hidden flex flex-col" data-category="hosting">
+          <div class="h-48 bg-gradient-to-tr from-slate-900 via-emerald-950/30 to-slate-900 p-6 flex flex-col justify-between border-b border-white/5 relative">
+            <div class="flex justify-between items-center">
+              <span class="px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[11px] font-mono">Hosting & DevOps</span>
+              <span class="text-xs text-slate-400 font-mono"><i class="fa-solid fa-shield mr-1"></i> Infrastructure</span>
+            </div>
+            <div class="space-y-1">
+              <div class="text-2xl text-emerald-400"><i class="fa-solid fa-network-wired"></i></div>
+              <h4 class="text-xl font-bold text-white">Vanguard Multi-Node Cluster</h4>
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Fault-tolerant server architecture engineered for high-load gaming communities and web portals with automated failover, load balancing, and automated daily backup routines.
+            </p>
+            <div class="space-y-4">
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">Linux Ubuntu</span>
+                <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">Nginx Load Balancer</span>
+                <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">DDoS Mitigation</span>
+                <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">Bash Scripts</span>
+              </div>
+              <div class="pt-3 border-t border-white/5 flex items-center justify-between text-xs font-mono">
+                <button class="open-project-details text-red-400 hover:text-red-300 flex items-center gap-1" data-title="Vanguard Multi-Node Cluster" data-desc="Production infrastructure deployed with multi-region backup nodes, DNS failover, and automated system alerts." data-tags="Linux, Nginx, DevOps, High Availability">
+                  <span>Details</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                </button>
+                <a href="#contact" class="text-slate-400 hover:text-white flex items-center gap-1">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 5: CraftForge Platform -->
+        <div class="project-card glass-card rounded-2xl overflow-hidden flex flex-col" data-category="web-apps websites">
+          <div class="h-48 bg-gradient-to-tr from-slate-900 via-amber-950/30 to-slate-900 p-6 flex flex-col justify-between border-b border-white/5 relative">
+            <div class="flex justify-between items-center">
+              <span class="px-2.5 py-1 rounded-md bg-amber-500/20 text-amber-400 border border-amber-500/30 text-[11px] font-mono">Full-Stack App</span>
+              <span class="text-xs text-slate-400 font-mono"><i class="fa-solid fa-users mr-1"></i> Community</span>
+            </div>
+            <div class="space-y-1">
+              <div class="text-2xl text-amber-400"><i class="fa-solid fa-gamepad"></i></div>
+              <h4 class="text-xl font-bold text-white">CraftForge Community Portal</h4>
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <p class="text-xs text-slate-400 leading-relaxed">
+              All-in-one gaming community hub with Discord OAuth2 login, synchronized in-game server whitelist sync, forum announcements, and player leaderboards.
+            </p>
+            <div class="space-y-4">
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">Discord OAuth</span>
+                <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">Node / Express</span>
+                <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">RCON Protocol</span>
+                <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">Tailwind</span>
+              </div>
+              <div class="pt-3 border-t border-white/5 flex items-center justify-between text-xs font-mono">
+                <button class="open-project-details text-red-400 hover:text-red-300 flex items-center gap-1" data-title="CraftForge Community Portal" data-desc="Complete custom community integration with automated whitelist hooks and live server status polling." data-tags="Discord API, Node.js, WebSockets, RCON">
+                  <span>Details</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                </button>
+                <a href="#contact" class="text-slate-400 hover:text-white flex items-center gap-1">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Project Quote & Turnaround Calculator -->
+  <section id="calculator" class="relative z-10 py-24 border-t border-white/5 bg-[#090910]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-14 space-y-3">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-600/10 border border-red-500/30 text-red-400 text-xs font-mono">
+          <i class="fa-solid fa-calculator"></i>
+          <span>Interactive Estimator</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Project Scope & Cost Calculator</h2>
+        <p class="text-slate-400 text-sm">
+          Select what you need to calculate an instant estimated timeline and starting ballpark for your project.
+        </p>
+      </div>
+
+      <div class="glass-card rounded-3xl p-6 sm:p-10 border border-red-500/20 shadow-2xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          
+          <!-- Options Column -->
+          <div class="lg:col-span-7 space-y-6">
+            
+            <!-- Step 1: Base Project Type -->
+            <div>
+              <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-3">1. Select Project Type</label>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="calcProjectType">
+                <button type="button" class="calc-type-btn p-3.5 rounded-xl border border-red-500 bg-red-500/10 text-left transition-all" data-price="250" data-days="3" data-name="Responsive Landing Page">
+                  <div class="text-sm font-bold text-white flex items-center justify-between">
+                    <span>Landing Page</span>
+                    <span class="text-xs text-red-400 font-mono">~$250</span>
+                  </div>
+                  <div class="text-[11px] text-slate-400 mt-1">Single-page modern site, mobile optimized</div>
+                </button>
+
+                <button type="button" class="calc-type-btn p-3.5 rounded-xl border border-white/10 bg-white/5 text-left transition-all hover:border-white/20" data-price="600" data-days="7" data-name="Full Website / Store">
+                  <div class="text-sm font-bold text-white flex items-center justify-between">
+                    <span>Full Website</span>
+                    <span class="text-xs text-red-400 font-mono">~$600</span>
+                  </div>
+                  <div class="text-[11px] text-slate-400 mt-1">Multi-page site or digital store</div>
+                </button>
+
+                <button type="button" class="calc-type-btn p-3.5 rounded-xl border border-white/10 bg-white/5 text-left transition-all hover:border-white/20" data-price="950" data-days="14" data-name="Custom Web Application">
+                  <div class="text-sm font-bold text-white flex items-center justify-between">
+                    <span>Web Application</span>
+                    <span class="text-xs text-red-400 font-mono">~$950</span>
+                  </div>
+                  <div class="text-[11px] text-slate-400 mt-1">Auth, database, dashboard, APIs</div>
+                </button>
+
+                <button type="button" class="calc-type-btn p-3.5 rounded-xl border border-white/10 bg-white/5 text-left transition-all hover:border-white/20" data-price="180" data-days="2" data-name="Server Hosting Setup">
+                  <div class="text-sm font-bold text-white flex items-center justify-between">
+                    <span>Hosting Setup</span>
+                    <span class="text-xs text-red-400 font-mono">~$180</span>
+                  </div>
+                  <div class="text-[11px] text-slate-400 mt-1">VPS, Docker, Nginx, SSL, Security</div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 2: Add-on Capabilities -->
+            <div>
+              <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-3">2. Add-On Requirements</label>
+              <div class="space-y-2.5" id="calcAddons">
+                <label class="flex items-center justify-between p-3 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] cursor-pointer">
+                  <div class="flex items-center gap-3">
+                    <input type="checkbox" class="calc-addon-check w-4 h-4 rounded text-red-600 focus:ring-0 bg-slate-900 border-white/20" data-price="120" data-days="2" data-name="Database & Auth">
+                    <span class="text-sm text-slate-200">Database & User Authentication System</span>
+                  </div>
+                  <span class="text-xs font-mono text-red-400">+$120</span>
+                </label>
+
+                <label class="flex items-center justify-between p-3 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] cursor-pointer">
+                  <div class="flex items-center gap-3">
+                    <input type="checkbox" class="calc-addon-check w-4 h-4 rounded text-red-600 focus:ring-0 bg-slate-900 border-white/20" data-price="80" data-days="1" data-name="Custom Domain & SSL">
+                    <span class="text-sm text-slate-200">Custom Domain, DNS & SSL Configuration</span>
+                  </div>
+                  <span class="text-xs font-mono text-red-400">+$80</span>
+                </label>
+
+                <label class="flex items-center justify-between p-3 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] cursor-pointer">
+                  <div class="flex items-center gap-3">
+                    <input type="checkbox" class="calc-addon-check w-4 h-4 rounded text-red-600 focus:ring-0 bg-slate-900 border-white/20" data-price="150" data-days="2" data-name="DDoS Defense & Uptime Monitoring">
+                    <span class="text-sm text-slate-200">Cloudflare DDoS Defense & 24/7 Monitoring</span>
+                  </div>
+                  <span class="text-xs font-mono text-red-400">+$150</span>
+                </label>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Summary Column -->
+          <div class="lg:col-span-5 bg-[#101018] rounded-2xl p-6 sm:p-7 border border-white/10 flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                <span class="text-sm font-bold text-white font-mono">ESTIMATION SUMMARY</span>
+                <span class="text-xs text-slate-400 font-mono">No Commitment</span>
+              </div>
+
+              <div class="space-y-2 text-xs font-mono">
+                <div class="flex justify-between text-slate-400">
+                  <span>Selected Package:</span>
+                  <span id="summaryPackageName" class="text-slate-200 font-semibold text-right">Responsive Landing Page</span>
+                </div>
+                <div class="flex justify-between text-slate-400">
+                  <span>Estimated Delivery:</span>
+                  <span id="summaryDays" class="text-emerald-400 font-semibold">~3 - 5 Days</span>
+                </div>
+                <div class="flex justify-between text-slate-400">
+                  <span>Deployment Support:</span>
+                  <span class="text-slate-200">Included</span>
+                </div>
+              </div>
+
+              <div class="pt-4 border-t border-white/10">
+                <div class="text-xs text-slate-400 font-mono">Estimated Starting Investment:</div>
+                <div class="text-4xl font-extrabold text-white font-mono mt-1 flex items-baseline gap-2">
+                  <span id="summaryPrice" class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-rose-400">$250</span>
+                  <span class="text-xs text-slate-400 font-normal">USD</span>
+                </div>
+                <p class="text-[11px] text-slate-500 mt-2">
+                  *Ballpark estimate based on standard requirements. Complex custom business logic will be confirmed upon discussion.
+                </p>
+              </div>
+            </div>
+
+            <div class="pt-6">
+              <a href="#contact" id="calcCtaBtn" class="w-full btn-red text-white text-center font-bold py-3.5 rounded-xl text-sm flex items-center justify-center gap-2">
+                <span>Lock In This Estimate</span>
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Tech Stack & Tools Section -->
+  <section id="skills" class="relative z-10 py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+      <h2 class="text-xs font-mono uppercase tracking-widest text-red-500 font-bold">Tech Ecosystem</h2>
+      <p class="text-3xl sm:text-4xl font-extrabold text-white">Battle-Tested Technologies</p>
+      <p class="text-slate-400 text-sm">
+        Tools and infrastructure frameworks I use daily to build resilient, fast digital products.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Category 1: Frontend -->
+      <div class="glass-card rounded-2xl p-6 space-y-4">
+        <h4 class="text-base font-bold text-white flex items-center gap-2 font-mono">
+          <i class="fa-brands fa-js text-yellow-400"></i> Frontend Development
+        </h4>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs text-slate-200">HTML5 / Semantic Web</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs text-slate-200">Modern CSS3 & Animations</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs text-slate-200">JavaScript (ES6+)</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs text-slate-200">Tailwind CSS</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs text-slate-200">React.js</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs text-slate-200">Responsive UI/UX</span>
+        </div>
+      </div>
+
+      <!-- Category 2: Backend & Databases -->
+      <div class="glass-card rounded-2xl p-6 space-y-4">
+        <h4 class="text-base font-bold text-white flex items-center gap-2 font-mono">
+          <i class="fa-brands fa-node-js text-emerald-400"></i> Backend & APIs
+        </h4>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs text-slate-200">Node.js</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs text-slate-200">Express.js</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs text-slate-200">Python</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs text-slate-200">RESTful APIs</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs text-slate-200">PostgreSQL</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs text-slate-200">MongoDB</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs text-slate-200">WebSockets</span>
+        </div>
+      </div>
+
+      <!-- Category 3: Hosting & DevOps -->
+      <div class="glass-card rounded-2xl p-6 space-y-4">
+        <h4 class="text-base font-bold text-white flex items-center gap-2 font-mono">
+          <i class="fa-brands fa-linux text-red-400"></i> Hosting & DevOps
+        </h4>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs text-slate-200">Linux (Ubuntu/Debian)</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs text-slate-200">Docker & Containers</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs text-slate-200">Nginx Reverse Proxy</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs text-slate-200">Cloudflare CDN & DNS</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs text-slate-200">Git & Version Control</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs text-slate-200">SSH & Firewall Config</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact & Direct Inquiry Section -->
+  <section id="contact" class="relative z-10 py-24 bg-[#0a0a12]/90 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- Left Contact Info -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="space-y-3">
+            <h2 class="text-xs font-mono uppercase tracking-widest text-red-500 font-bold">Contact Redstone</h2>
+            <p class="text-3xl sm:text-4xl font-extrabold text-white">Let's Build Something Great Together</p>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Have a web app idea, need a custom website, or looking for reliable hosting configuration? Drop a message or reach out directly on Discord.
+            </p>
+          </div>
+
+          <!-- Direct Reach Cards -->
+          <div class="space-y-3 pt-2">
+            
+            <!-- Discord Card -->
+            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
+                  <i class="fa-brands fa-discord text-lg"></i>
+                </div>
+                <div>
+                  <div class="text-xs text-slate-400 font-mono">Discord Username</div>
+                  <div class="text-sm font-bold text-white font-mono">redstone#0001</div>
+                </div>
+              </div>
+              <button id="copyDiscordBtn" class="btn-outline px-3 py-1.5 rounded-lg text-xs font-mono text-slate-300 hover:text-white flex items-center gap-1.5">
+                <i class="fa-regular fa-copy"></i>
+                <span id="copyDiscordText">Copy</span>
+              </button>
+            </div>
+
+            <!-- Email Card -->
+            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400">
+                  <i class="fa-regular fa-envelope text-lg"></i>
+                </div>
+                <div>
+                  <div class="text-xs text-slate-400 font-mono">Direct Email</div>
+                  <div class="text-sm font-bold text-white font-mono">redstone.dev@example.com</div>
+                </div>
+              </div>
+              <button id="copyEmailBtn" class="btn-outline px-3 py-1.5 rounded-lg text-xs font-mono text-slate-300 hover:text-white flex items-center gap-1.5">
+                <i class="fa-regular fa-copy"></i>
+                <span id="copyEmailText">Copy</span>
+              </button>
+            </div>
+
+            <!-- GitHub Card -->
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-between hover:border-white/20 transition-all block">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white">
+                  <i class="fa-brands fa-github text-lg"></i>
+                </div>
+                <div>
+                  <div class="text-xs text-slate-400 font-mono">GitHub Profile</div>
+                  <div class="text-sm font-bold text-white font-mono">github.com/redstone</div>
+                </div>
+              </div>
+              <span class="text-slate-400 text-xs"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+            </a>
+
+          </div>
+        </div>
+
+        <!-- Right Contact Form -->
+        <div class="lg:col-span-7">
+          <div class="glass-card rounded-3xl p-8 sm:p-10 border border-white/10 relative">
+            
+            <form id="contactForm" class="space-y-5">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                
+                <div>
+                  <label for="contactName" class="block text-xs font-mono uppercase text-slate-400 mb-2">Your Name</label>
+                  <input type="text" id="contactName" required placeholder="Alex Mercer" class="w-full bg-[#12121c] border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-red-500 transition-colors">
+                </div>
+
+                <div>
+                  <label for="contactEmail" class="block text-xs font-mono uppercase text-slate-400 mb-2">Email Address</label>
+                  <input type="email" id="contactEmail" required placeholder="alex@example.com" class="w-full bg-[#12121c] border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-red-500 transition-colors">
+                </div>
+
+              </div>
+
+              <div>
+                <label for="contactService" class="block text-xs font-mono uppercase text-slate-400 mb-2">Service Needed</label>
+                <select id="contactService" class="w-full bg-[#12121c] border border-white/10 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-red-500 transition-colors">
+                  <option value="Full Web Application">Custom Web Application Development</option>
+                  <option value="Responsive Website">Portfolio or Business Website</option>
+                  <option value="Server Hosting Setup">Server Hosting & Infrastructure Configuration</option>
+                  <option value="Security & Optimization">Speed Tuning & DDoS Protection</option>
+                  <option value="Other Consultation">Other / General Inquiry</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="contactMessage" class="block text-xs font-mono uppercase text-slate-400 mb-2">Project Details</label>
+                <textarea id="contactMessage" rows="4" required placeholder="Tell me about your project goals, deadlines, or technical requirements..." class="w-full bg-[#12121c] border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-red-500 transition-colors"></textarea>
+              </div>
+
+              <button type="submit" id="submitBtn" class="w-full btn-red text-white font-bold py-4 rounded-xl text-sm flex items-center justify-center gap-2">
+                <span>Send Project Request</span>
+                <i class="fa-solid fa-paper-plane text-xs"></i>
+              </button>
+
+              <div class="text-[11px] text-center text-slate-500 font-mono">
+                ⚡ Typical response time: under 12 hours
+              </div>
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Project Details Modal -->
+  <div id="projectModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-[#12121c] border border-red-500/30 rounded-2xl max-w-lg w-full p-6 space-y-5 shadow-2xl relative">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4">
+        <h3 id="modalTitle" class="text-xl font-bold text-white">Project Title</h3>
+        <button id="closeModalBtn" class="text-slate-400 hover:text-white p-1">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+      <p id="modalDesc" class="text-sm text-slate-300 leading-relaxed">
+        Project description goes here...
+      </p>
+      <div class="space-y-2">
+        <div class="text-xs font-mono text-slate-400 uppercase">Technologies Used:</div>
+        <div id="modalTags" class="flex flex-wrap gap-2"></div>
+      </div>
+      <div class="pt-4 border-t border-white/10 flex justify-end gap-3">
+        <button id="closeModalBtn2" class="btn-outline px-4 py-2 rounded-xl text-xs font-semibold text-slate-300">Close</button>
+        <a href="#contact" class="btn-red px-5 py-2 rounded-xl text-xs font-semibold text-white">Inquire Similar Project</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Alert -->
+  <div id="toast" class="flex items-center gap-3 bg-[#161622] border border-red-500/40 px-5 py-3.5 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
+    <div class="w-8 h-8 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center text-sm">
+      <i class="fa-solid fa-circle-check"></i>
+    </div>
+    <div>
+      <div id="toastTitle" class="text-xs font-bold text-white">Notification</div>
+      <div id="toastMsg" class="text-[11px] text-slate-400">Action completed successfully.</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="relative z-10 py-10 border-t border-white/5 bg-[#07070b]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="font-mono text-sm font-bold text-white">REDSTONE<span class="text-red-500">.</span>DEV</span>
+        <span class="text-slate-600 text-xs">|</span>
+        <span class="text-xs text-slate-500">© 2026 Redstone. All rights reserved.</span>
+      </div>
+      <div class="flex items-center gap-6 text-xs text-slate-400 font-mono">
+        <a href="#about" class="hover:text-red-400">About</a>
+        <a href="#services" class="hover:text-red-400">Services</a>
+        <a href="#projects" class="hover:text-red-400">Projects</a>
+        <a href="#contact" class="hover:text-red-400">Contact</a>
+        <a href="#" class="hover:text-red-400 flex items-center gap-1">
+          <span>Top</span> <i class="fa-solid fa-arrow-up text-[10px]"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script Logic -->
+  <script src="script.js"></script>
+</body>
+</html>
